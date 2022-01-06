@@ -21,7 +21,7 @@ module "ec2_instance" {
   instance_type          = "t2.micro"
   key_name               = "kp_lab"
   monitoring             = true
-  vpc_security_group_ids = ["sg-0bbd5c6b35d23a7d9"]
+  vpc_security_group_ids = ["sg-0c5499b0953260fa8"]
   subnet_id              = "subnet-0b0fa07c52ffc4553"
 
   tags = {

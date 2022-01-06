@@ -8,7 +8,7 @@ packer {
 }
 variable "ami-name" {  
   type = string  
-  default = "learn-packer-linux-aws"
+  default = "linux-golden_image-from-packer"
 }
 
 source "amazon-ebs" "ubuntu" {
