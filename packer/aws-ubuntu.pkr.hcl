@@ -35,10 +35,15 @@ build {
     "source.amazon-ebs.ubuntu"
   ]
 
-//  provisioner "shell-local" {
-//   execute_command = ["{{.Vars}} sudo -S -E sh -eux '{{.Path}}"]
-//   scripts = ["script.sh"]
-// }
+provisioner "shell" {       
+  inline = [        
+    "sudo apt-get update"      
+  ]  
+}
+
+provisioner "ansible" {      
+  playbook_file = "./ansible/playbook.yml"    
+}
  
  post-processor "manifest" {
   output = "./packer/manifest.json"
