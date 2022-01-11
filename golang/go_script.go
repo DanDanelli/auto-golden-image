@@ -25,9 +25,9 @@ type Data struct {
 	LastRunUUID string `json:"last_run_uuid"`
 }
 
-func executePacker(arg1 string, arg2 string, packerFile string) {
+func executePacker(packerFile string) {
 	//exec packer
-	cmd := exec.Command(arg1, arg2, packerFile)
+	cmd := exec.Command("packer", "build", packerFile)
 	println("\n-------Packer build-------")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
@@ -114,7 +114,7 @@ func executeTerraform(path string, action string) {
 
 func main() {
 
-	executePacker("packer", "build", "./packer/aws-ubuntu.pkr.hcl")
+	executePacker("./packer/aws-ubuntu.pkr.hcl")
 	writeAmiIdInTFVars("./packer/manifest.json", "./terraform/variables.tf")
 	executeTerraform("./terraform", "apply")
 
